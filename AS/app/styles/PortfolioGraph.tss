@@ -1,0 +1,62 @@
+
+"#PortfolioGraph":{
+	orientation :Titanium.UI.LANDSCAPE_RIGHT,
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT]
+}
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}
+"#filterBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_22
+	}
+}
+
+".vw":{
+	top:0,
+	 backgroundColor:Alloy.CFG.color.buttonBackgroundColor, 
+	 height:Ti.UI.FILL,left:Alloy.Globals.size_15  
+}
+".pickerLbl":{
+	touchEnabled:false,
+	font:{
+		fontSize:Alloy.Globals.size_12,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	color:"white",
+	left:Alloy.Globals.size_5,
+	right:Alloy.Globals.size_20,
+}
+".fa": {
+	
+	font: {
+		fontFamily: 'FontAwesome',
+		fontSize:Alloy.Globals.size_14
+		
+	},
+	color:'white'
+}
+".btn":{
+	backgroundColor:Alloy.CFG.color.buttonBackgroundColor, 
+	width:Alloy.Globals.size_45, 
+	font:{
+		fontSize:Alloy.Globals.size_11,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	color:"white",
+	
+}
+".arrow": {
+	font: {
+		fontFamily: 'FontAwesome',
+		fontSize:Alloy.Globals.size_20
+		
+	},color:'white'
+}
+"#kpiLbl":{
+	ellipsize:Titanium.UI.TEXT_ELLIPSIZE_TRUNCATE_END,
+	maxLines:1,
+	width:"90%",
+}

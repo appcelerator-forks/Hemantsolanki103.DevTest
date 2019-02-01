@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highstock Example</title>
+		<script src="jquery-3.1.1.min.js"></script>
+		<script src="highstock.js"></script>
+		<script src="highcharts.js"></script>
+		<script type="text/javascript">
+			function plotRankAnalyticsGraph(jsonObj) {
+				if(jsonObj.xaxisParamUnit != null){
+				var unit = jsonObj.xaxisParamUnit; 	
+				}else{
+					var unit ='';
+				}
+				Highcharts.setOptions({
+					colors : ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4', '#c0c4c2', '#dbb6d6']
+				});
+				new Highcharts.chart('container', {
+					chart : {
+						type : 'line',
+						backgroundColor : "#0f2d30",
+					},
+				
+				title : {
+						text: '',
+					//	text : jsonObj.chartName,
+						//style : {
+						//	color : "#92ccc5",
+						//	fontWeight : 'light',
+						//	fontSize : 14
+						//}
+				},
+					plotOptions : {
+						series : {
+							marker : {
+								symbol : "circle",
+								//fillColor: 'white',
+								//	lineWidth: 2,
+								//         lineColor: Highcharts.getOptions().colors[0]
+
+							}
+						}
+					},
+					
+					// tooltip : {
+					// backgroundColor : '#FCFFC5',
+					// shared : true,
+					// useHTML : true,
+					// headerFormat : '<large style="text-align: right">{series.name}</large><table>',
+					// pointFormat : '<tr><td style="color: {}">x={point.x}, y={point.y}</tr>',
+					//
+					// footerFormat : '</table>',
+					// // valueDecimals: 2
+					// },
+					tooltip : {
+						backgroundColor : '#FCFFC5',
+						useHTML : true,
+						headerFormat : '<large style="text-align: right">{series.name}</large><table>',
+						pointFormat : (jsonObj.xaxisParamType == "DATE")?'<tr><td style="color: {}">x={point.x:%e/%b/%Y}, y={point.y}</tr>': '<tr><td style="color: {}">x={point.x}, y={point.y}</tr>',
+						footerFormat : '</table>',
+						
+					},
+					legend : {
+						squareSymbol : false,
+						margin : 0,
+						align : 'left',
+						itemStyle : {
+							color : '#3484e1',
+							fontWeight : 'light',
+							fontSize : 10
+						}
+					},
+					xAxis : {
+						type :(jsonObj.xaxisParamType == "DATE")? 'datetime':'linear',
+						//tickPixelInterval: 100,
+						dateTimeLabelFormats :(jsonObj.xaxisParamType == "DATE")?  {
+							month : '%b.%Y'
+						}:'',
+						lineWidth : 0.5,
+						minorGridLineWidth : 0,
+						minorTickInterval : 'auto',
+						minorTickWidth : 1,
+
+						lineColor : '#92ccc5',
+						title : {
+							margin : 5,
+							text :(unit == "")? jsonObj.xaxisParamName: jsonObj.xaxisParamName+  '('+unit+')',
+							style : {
+								color : '#10bbd1',
+								fontWeight : 'light',
+								fontSize : 11
+							}
+						},
+						labels : {
+							style : {
+								color : '#92ccc5',
+								fontWeight : 'light',
+							}
+						}
+					},
+					credits : {
+						enabled : false
+					},
+					yAxis : {
+						lineWidth : 0.5,
+						minorGridLineWidth : 0,
+						minorTickInterval : 'auto',
+						minorTickWidth : 1,
+
+						labels : {
+							style : {
+								color : '#92ccc5',
+								fontWeight : 'light',
+							}
+						},
+						title : {
+							margin : 5,
+							text : jsonObj.yaxisParamName+'('+jsonObj.yaxisParamUnit+')',
+							style : {
+								color : '#10bbd1',
+								fontWeight : 'light',
+								fontSize : 11
+							}
+						},
+						lineColor : '#92ccc5',
+						gridLineColor : '#000000',
+						gridLineWidth : 0.2,
+
+					},
+					series :jsonObj.plots
+
+				});
+			}
+
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="container" style="height: 250px;"></div>
+	</body>
+</html>
+

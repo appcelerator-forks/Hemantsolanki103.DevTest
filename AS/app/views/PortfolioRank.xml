@@ -1,0 +1,43 @@
+<Alloy>
+	<Window titleid="portfolioRank_txt" onOpen="openFunc" name="portfolioRank" onClose="closeFunc">
+		<RightNavButtons  platform="ios">
+			<View left="0">
+				<Button id="filterBtn" class="fa" title="\uf0b0" color="Alloy.CFG.color.lineColor" onClick="filterClickFunc"></Button>
+			</View>
+			<View left="0"> 
+				<Button id="homeBtn" class="fa" title="\uf015" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<View id="containerVW">
+			<Label id="filterLbl"  textid="nofilter_txt" ></Label>
+			<Widget id="trendDropDown" src="se.iloop.dropdown"></Widget>
+			<View height="1" backgroundColor="Alloy.CFG.color.lineColor" top="Alloy.Globals.size_45"></View>
+			
+				<TableView id="rankTable">
+					<FooterView>
+						<View backgroundColor="transparent" height="1"></View>
+					</FooterView>
+					<TableViewSection id="topSection">
+						<HeaderView>
+							<View height="Alloy.Globals.size_40" backgroundColor="Alloy.CFG.color.buttonBackgroundColor" onClick="openTopPicker" index="0">
+								<Label id="topLbl" class="sectionLbl" touchEnabled="false"></Label>
+								<Label id="arrowLbl"  class="fa" text="\uf107"  touchEnabled="false"></Label>
+							</View>
+						</HeaderView>
+					</TableViewSection>
+					<TableViewSection id="worstSection">
+						<HeaderView >
+							<View height="Alloy.Globals.size_60">
+							<View top="20" height="Alloy.Globals.size_40" backgroundColor="Alloy.CFG.color.buttonBackgroundColor" onClick="openWorstPicker" index="1">
+								<Label id="worstLbl" class="sectionLbl"  touchEnabled="false"></Label>
+								<Label id="arrowLbl"  class="fa" text="\uf107"  touchEnabled="false"></Label>
+							</View>
+							</View>
+						</HeaderView>
+					</TableViewSection>
+				</TableView>
+				<View height="1" backgroundColor="Alloy.CFG.color.lineColor" bottom="Alloy.Globals.size_54"></View>
+			<Button id="showGraphBtn" onClick="showGraphFunc"></Button>
+		</View>
+	</Window>
+</Alloy>

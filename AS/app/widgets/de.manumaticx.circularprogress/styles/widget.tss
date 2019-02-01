@@ -1,0 +1,16 @@
+"Label": {
+	color: '#000',
+	font: {
+		fontSize: Alloy.Globals.size_15,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	},
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	textAlign:'center',
+	// shadowRadius: 2,
+		// shadowOffset: {
+			// x: 0,
+			// y: 1
+		// },
+		// shadowColor:'#dcdcdc'
+}

@@ -1,0 +1,61 @@
+
+".container" : {
+  
+}
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}
+"#filterBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_22
+	}
+}
+"#filterLbl":{
+	top:Alloy.Globals.size_5,
+	height:Alloy.Globals.size_35,
+	left:Alloy.Globals.size_10,
+	right:Alloy.Globals.size_170,
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_12
+	},
+	color: 'white',
+	maxLines:2,
+}
+"#trendDropDown":{
+	height:Alloy.Globals.size_35,
+	width:Alloy.Globals.size_150,
+	backgroundColor:"red"
+	
+}
+"#envBenefitLbl":{
+	font:{
+		fontSize:Alloy.Globals.size_18,
+		fontFamily:Alloy.CFG.font.robotoBold
+	},
+	color:"white",
+	left:Alloy.Globals.size_6,
+	text:"34.02"
+}
+
+"#staticCo2Lbl":{
+	font:{
+		fontSize:Alloy.Globals.size_13,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	},
+	color:'#cdc9c9',
+	left:Alloy.Globals.size_6,
+	text:"T CO2"
+}
+"#staticEnvLbl":{
+	font:{
+		fontSize:Alloy.Globals.size_12,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	color:"#92ccc5",
+	bottom:Alloy.Globals.size_3,
+	text:"Environment Benefits"
+}
+

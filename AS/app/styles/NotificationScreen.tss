@@ -1,0 +1,84 @@
+
+".container": {}
+
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}
+"#filterBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_22
+	}
+}
+"#severityScrollVW":{
+	top:Alloy.Globals.size_15,
+	height:Alloy.Globals.size_40,
+	//backgroundColor:"red",
+	left: -1,
+	right: -1,
+	scrollType: "horizontal",
+	layout: "horizontal",
+	borderWidth: 1,
+	borderColor:Alloy.CFG.color.lineColor
+}
+"#staticSelectSeverityLbl":{
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_15
+	},
+	textid: "selectSeverity_txt",
+	top:Alloy.Globals.size_15,
+	left:Alloy.Globals.size_15,
+	color: "white",
+}
+"#allLbl":{
+	textid:'all_txt',
+	width:Alloy.Globals.size_50
+}
+
+"#alertLbl":{
+textid:'alert_txt',
+	width:Alloy.Globals.size_80
+}
+
+"#alarmLbl":{
+	textid:'alarm_txt',
+	width:Alloy.Globals.size_80
+}
+
+"#warnLbl":{
+	textid:'warning_txt',
+	width:Alloy.Globals.size_100
+}
+"#emergencyLbl":{
+	textid:"emg_txt",
+	width:Alloy.Globals.size_110
+}
+".lbl":{
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_14
+	},
+	color: Alloy.CFG.color.lineColor,
+	textAlign: "center",
+	touchEnabled: false
+}
+"#notificationTable":{	
+	height:Ti.UI.FILL,
+	backgroundColor:Alloy.CFG.color.backgroundColor,
+	separatorColor:Alloy.CFG.color.lineColor,
+	tableSeparatorInsets
+:{
+		left:0
+	}
+}
+"#filterLbl":{
+	height:Alloy.Globals.size_35,
+	left:Alloy.Globals.size_10,
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_12
+	},
+	color: 'white',
+}

@@ -1,0 +1,33 @@
+<Alloy>
+	<Window titleid="portfolioGraph_txt" id="PortfolioGraph" onOpen="openFunc" name="portfolioRank" backgroundColor="#0f2d30" >
+		<RightNavButtons  platform="ios">
+			<View left="0">
+				<Button id="filterBtn" class="fa" title="\uf0b0" color="Alloy.CFG.color.lineColor" onClick="filterClickFunc"></Button>
+			</View>
+			<View left="0">
+				<Button id="homeBtn" class="fa" title="\uf015" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<View id="mainVW" layout="vertical">
+			<View id="filterContainerVW" height="0" layout="horizontal" top="Alloy.Globals.size_5">
+				
+				<View id="kpiVW" class="vw" left="10" width="30%"  onClick="openKPIPicker">
+					<Label id="kpiLbl" class="pickerLbl"></Label>
+					<Label   class="arrow" right="Alloy.Globals.size_5" text="\uf107"></Label>
+				</View>
+				<View id="fromDateVW" left="30" class="vw" width="16%" onClick="openFromDatePicker">
+					<Label id="fromDateLbl" class="pickerLbl">From Date</Label>
+					<Label   class="fa" right="Alloy.Globals.size_5" text="\uf073"></Label>
+				</View>
+				<View id="toDateVW"  left="10" class="vw" width="16%" onClick="openToDatePicker">
+					<Label id="toDateLbl" class="pickerLbl">To Date</Label>
+					<Label   class="fa" right="Alloy.Globals.size_5" text="\uf073"></Label>
+				</View>
+				<Button class="btn"  top="0"  left="5" height="Ti.UI.FILL" onClick="applyFilterFunc" title="Apply"></Button>
+				<Button class="btn" top="0"   left="5" height="Ti.UI.FILL" onClick="resetFilterFunc"  title="Reset"></Button>
+				<Button class="btn" top="0"   left="5" height="Ti.UI.FILL" onClick="hideFilterFunc" title="Hide"></Button>
+			</View>
+			<WebView id='chartWebView' backgroundColor="#0f2d30"  scalesPageToFit="true" top="Alloy.Globals.size_5"></WebView>
+		</View>
+	</Window>
+</Alloy>

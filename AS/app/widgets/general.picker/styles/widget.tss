@@ -1,0 +1,14 @@
+"#widget": {
+}
+"#buttonContainer": {
+    backgroundColor: Alloy.CFG.color.buttonBackgroundColor
+}
+".pickerButton": {
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+    textAlign: 'center',
+    color:"white"
+    
+}
+

@@ -1,0 +1,119 @@
+
+".container": {}
+
+".navItemClass":{
+
+	font:{
+		fontFamily: 'simple-line-icons',
+		fontSize:Alloy.Globals.size_20
+	}
+}
+
+"#welcomeLbl":{
+	left: Alloy.Globals.size_10,
+	font:{
+		fontSize:Alloy.Globals.size_18,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	},
+	top:Alloy.Globals.size_10,
+	bottom:Alloy.Globals.size_26,
+	color:Alloy.CFG.color.lineColor,
+	right:Alloy.Globals.size_120,
+	verticalAlign:Titanium.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	ellipsize:Titanium.UI.TEXT_ELLIPSIZE_TRUNCATE_END
+}
+"#companyLogo":{
+	right: Alloy.Globals.size_10,
+	top: Alloy.Globals.size_15,
+	bottom: Alloy.Globals.size_15,
+	borderRadius: Alloy.Globals.size_10,
+	width: Alloy.Globals.size_110
+}
+"#dateLbl":{
+	left: Alloy.Globals.size_10,
+	bottom:Alloy.Globals.size_10,
+	font:{
+		fontSize:Alloy.Globals.size_14
+	},
+	color:Alloy.CFG.color.lineColor
+}
+
+".gridClass":{
+	width: "50%",
+
+	height: Ti.UI.FILL,
+	backgroundColor: Alloy.CFG.color.backgroundColor,
+	touchFeedback: "true",
+	color: Alloy.CFG.color.lineColor,
+	touchFeedbackColor: "#4B7977"
+}
+"#mapBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_60
+	},
+	textAlign: 'center'
+}
+"#notificationBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_60
+	}
+}
+
+"#insightBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_60
+	}
+}
+
+"#performanceBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_60
+	}
+}
+
+".titleClass":{
+	font:{
+		fontSize:Alloy.Globals.size_16
+	},
+	top:Alloy.Globals.size_15,
+	left: 0,
+	width:Ti.UI.FILL,
+	touchEnabled:false,
+	color:Alloy.CFG.color.lineColor,
+	textAlign:'center'
+}
+".hoverBtnClass[platform:ios]":{
+	backgroundColor: "transparent",
+	zIndex: "1",
+	height:Ti.UI.FILL,
+	width:Ti.UI.FILL,
+	platform: "ios",
+	backgroundSelectedColor: Alloy.CFG.color.navBarColor
+}
+".gridImageClass":{
+	width:Alloy.Globals.size_60,
+	height:Alloy.Globals.size_60,
+	touchEnabled: false
+}
+"#bottowView":{
+	bottom: 0,
+	height:Alloy.Globals.size_24,
+	backgroundColor:Alloy.CFG.color.buttonBackgroundColor
+}
+"#bottomLbl":{
+	left: 0,
+
+
+	textid: "powered_by_txt",
+	font: {
+		fontSize: Alloy.Globals.size_10,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	},
+	color: "white"
+}
+"#heliosLogo":{
+	image: '/commonImages/helios_logo.png',
+	left: 5,
+	height:Alloy.Globals.size_16,
+	width:Alloy.Globals.size_16
+}

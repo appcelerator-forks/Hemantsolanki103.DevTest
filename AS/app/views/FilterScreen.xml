@@ -1,0 +1,18 @@
+<Alloy>
+	<Window titleid="filter_title"  layout="vertical"  onOpen="openFunc">
+		<RightNavButtons  platform="ios">
+			<View>
+				<Button class="navBtn" titleid="apply_txt" color="white"  onClick="applyFilterFunc"></Button>
+			</View>
+			<View>
+				<Button class="navBtn" titleid="reset_txt" color="white"  onClick="resetFilterFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<Widget id="portfolioDropDown" src="se.iloop.dropdown"></Widget>
+		<Widget id="zone" src="se.iloop.dropdown"></Widget>
+		<!-- <View id="portfolioVW" class="dropDownClass" >
+			<Label id="portfolioSelectionLbl" right="Alloy.Globals.size_15"></Label>
+			<Label id="dropDownIcon" class="fa" text="\uf13a"></Label>
+		</View> -->
+	</Window>
+</Alloy>

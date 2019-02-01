@@ -1,0 +1,9 @@
+
+".container" : {
+  
+}
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}

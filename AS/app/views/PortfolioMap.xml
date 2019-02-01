@@ -1,0 +1,9 @@
+<Alloy>
+	<Window titleid="map_title"  layout="vertical"  onOpen="openFunc">
+			<!-- <RightNavButtons  platform="ios">
+			<View left="0"> 
+				<Button id="homeBtn" class="fa" title="\u0b0" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons> -->
+	</Window>
+</Alloy>

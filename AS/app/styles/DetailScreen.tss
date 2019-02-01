@@ -1,0 +1,41 @@
+
+".container": {}
+
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}
+"#img_type":{
+	height:Alloy.Globals.size_24,
+	width:Alloy.Globals.size_24,
+	left:Alloy.Globals.size_10,
+	top:Alloy.Globals.size_17
+}
+
+"#titleLbl":{
+	top:Alloy.Globals.size_15,
+	left:Alloy.Globals.size_50,
+	right:Alloy.Globals.size_10,
+	font: {
+		fontFamily: Alloy.CFG.font.robotoMedium,
+		fontSize: Alloy.Globals.size_18
+	},
+	color: Alloy.CFG.color.listTitleColor,
+	maxLines: 1,
+	ellipsize: Titanium.UI.TEXT_ELLIPSIZE_TRUNCATE_END,
+	touchEnabled: false
+}
+"#descLbl":{
+	top:Alloy.Globals.size_45,
+	left:Alloy.Globals.size_50,
+	right:Alloy.Globals.size_10,
+	font: {
+		fontFamily: Alloy.CFG.font.robotoRegular,
+		fontSize: Alloy.Globals.size_15
+	},
+	color: Alloy.CFG.color.lineColor,
+	verticalAlign : Titanium.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	touchEnabled: false,
+	textAlign:Titanium.UI.TEXT_ALIGNMENT_JUSTIFY
+}

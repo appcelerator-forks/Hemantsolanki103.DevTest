@@ -1,0 +1,70 @@
+"#wrapper": {
+  layout: 'vertical',
+    top: 5,
+    height: Ti.UI.SIZE,
+    width: '90%',
+    backgroundColor: 'transparent',
+}
+
+"#title": {
+	left:0,
+    width: "70%",
+    
+    color:"#14595f",
+    textAlign: "left",
+    font: {
+        fontSize: 16,
+        fontWeight: 'normal'
+    },
+    
+    color:"#92ccc5",
+}
+"#fieldLbl":{
+	right:0,
+	text:'3.65 Sp. Yeild',
+    width: "28%",
+    textAlign: "right",
+    
+    font: {
+        fontSize: 11,
+        fontWeight: 'normal'
+    },
+    color:"#87c5bd",
+}
+"#unitLbl":{
+	left:0,
+    
+    textAlign: "left",
+    font: {
+        fontSize: 11,
+        fontWeight: 'normal'
+    },
+    color:"#5a8886",
+}
+//5a8886
+"#valueWrapper": {
+    
+    height: 14,
+    right:0,
+    borderRadius:6,
+    width:"78%",
+    backgroundColor: '#BBB',
+}
+
+"#value": {
+    left: 0,
+    height: Ti.UI.FILL,
+    borderRadius:7,
+    width: 1,
+    backgroundColor: '#018FD1',
+}
+
+"#valueText": {
+    width: Ti.UI.FILL,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font: { 
+        fontSize: 8,
+        fontWeight: 'normal'
+    },
+    zIndex: 1,
+}

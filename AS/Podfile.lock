@@ -1,0 +1,16 @@
+PODS:
+  - KSToastView (0.5.7)
+
+DEPENDENCIES:
+  - KSToastView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KSToastView
+
+SPEC CHECKSUMS:
+  KSToastView: aeb0ca50b44e9568b6f95b2d1ec53a3f016b50fc
+
+PODFILE CHECKSUM: e9e775fca59918cc8fda2e1bf03cc647fd0a92e4
+
+COCOAPODS: 1.5.3

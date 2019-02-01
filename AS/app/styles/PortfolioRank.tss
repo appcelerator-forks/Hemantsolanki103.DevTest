@@ -1,0 +1,72 @@
+
+".container": {}
+"#homeBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_26
+	}
+}
+"#filterBtn":{
+	font:{
+		fontSize:Alloy.Globals.size_22
+	}
+}
+"#filterLbl":{
+	top:Alloy.Globals.size_5,
+	height:Alloy.Globals.size_35,
+	left:Alloy.Globals.size_10,
+	right:Alloy.Globals.size_170,
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_12
+	},
+	color: 'white',
+	maxLines: 2
+}
+"#trendDropDown":{
+	height:Alloy.Globals.size_35,
+	width:Alloy.Globals.size_150
+}
+".sectionLbl":{
+	font:{
+		fontFamily:Alloy.CFG.font.robotoMedium,
+		fontSize:Alloy.Globals.size_16
+	},
+	color: 'white',
+	left:Alloy.Globals.size_10
+}
+"#arrowLbl":{
+	font:{
+
+		fontSize:Alloy.Globals.size_25,
+		fontWeight: 'bold'
+	},
+	color: 'white',
+
+	right:Alloy.Globals.size_20
+}
+"#rankTable":{
+	backgroundColor: '#0f2d30' ,
+	top:Alloy.Globals.size_46,
+	bottom:Alloy.Globals.size_55,
+	zIndex: 1,
+	tableSeparatorInsets:{
+		left: 0,
+		right: 0
+	},
+	separatorColor: "black"
+}
+"#showGraphBtn":{
+	width: '84%',
+	bottom:Alloy.Globals.size_10,
+	titleid: 'showGraph_txt',
+	font: {
+		fontSize: Alloy.Globals.size_15,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	color: "white",
+	height:Alloy.Globals.size_34,
+	borderRadius:Alloy.Globals.size_17,
+	touchFeedback: true,
+	touchFeedbackColor:Alloy.CFG.color.lineColor,
+	backgroundColor:Alloy.CFG.color.buttonBackgroundColor
+}

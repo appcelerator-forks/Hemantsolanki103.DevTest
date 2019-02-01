@@ -1,0 +1,50 @@
+
+
+<Alloy>
+	<Window titleid="notification_txt"  layout="vertical"  onOpen="openFunc" >
+		<RightNavButtons  platform="ios">
+				<View left="0">
+				<Button id="filterBtn" class="fa" title="\uf0b0" color="Alloy.CFG.color.lineColor" onClick="filterClickFunc"></Button>
+			</View>
+			<View left="0"> 
+				<Button id="homeBtn" class="fa" title="\uf015" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<!-- <Label id="staticSelectSeverityLbl"></Label> -->
+		<ScrollView id="severityScrollVW" onClick="selectSeverityFunc" >
+			<View id="allVW" backgroundColor="Alloy.CFG.color.buttonBackgroundColor" width="Ti.UI.SIZE" index="0">
+				<Label id="allLbl"  class="lbl" color="white"></Label>
+			</View>
+			<View backgroundColor="Alloy.CFG.color.lineColor" width="1"></View>
+			<View id="alertVW" width="Ti.UI.SIZE" index="1">
+				<Label id="alertLbl" class="lbl"></Label>
+			</View>
+			<View backgroundColor="Alloy.CFG.color.lineColor" width="1"></View>
+			<View id="alarmVW" width="Ti.UI.SIZE" index="2">
+				<Label id="alarmLbl" class="lbl"></Label>
+			</View>
+			<View backgroundColor="Alloy.CFG.color.lineColor" width="1"></View>
+			<View id="warnVW" width="Ti.UI.SIZE" index="3">
+				<Label id="warnLbl" class="lbl"></Label>
+			</View>
+			<View backgroundColor="Alloy.CFG.color.lineColor" width="1"></View>
+			<View id="emergencyVW" width="Ti.UI.SIZE" index="4">
+				<Label id="emergencyLbl" class="lbl"></Label>
+			</View>
+			<View backgroundColor="Alloy.CFG.color.lineColor" width="1"></View>
+		</ScrollView>
+		
+		<Label id="filterLbl"  textid="nofilter_txt" ></Label>
+		
+		<View backgroundColor="Alloy.CFG.color.lineColor" height="1"></View>
+		<View >
+			<Label id="noDataLbl" color="Alloy.CFG.color.lineColor" textid="noData_txt" ></Label>
+			<TableView id="notificationTable" separatorColor="Alloy.CFG.color.lineColor" onClick="notificationTableClickFunc">
+				<FooterView>
+					<View height="1"></View>
+				</FooterView>
+			</TableView>
+			
+		</View>
+	</Window>
+</Alloy>

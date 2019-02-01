@@ -1,0 +1,31 @@
+<Alloy>
+	<NavigationWindow id="navWin" module="xp.ui">
+		<Window onOpen="openFunc" titleid="login_title" onClick="winClickFunc">
+			<!-- <View height="1" backgroundColor="Alloy.CFG.color.lineColor" top="0"></View> -->
+			<ScrollView  layout="vertical" top="0" bottom="Alloy.Globals.size_24">
+				<ImageView id="logo"></ImageView>
+				<Label id="headerLbl" textid="app_name_caps" color='Alloy.CFG.color.lineColor'></Label>
+				<View height="Ti.UI.SIZE" layout="vertical" top="8%">
+					<View height="Ti.UI.SIZE" width="84%">
+						<Label id="userIconLbl" class="sa" text='\ue005' color='Alloy.CFG.color.lineColor'></Label>
+						<TextField id="emailTF" class="textField" name="tf" onReturn="emailReturnFunc"></TextField>
+						<View height="1" backgroundColor="Alloy.CFG.color.lineColor" bottom="0"></View>
+					</View>
+					<View height="Ti.UI.SIZE" width="84%" top="Alloy.Globals.size_10">
+						<Label id="pwdIconLbl" class="sa" text='\ue08e' color='Alloy.CFG.color.lineColor'></Label>
+						<TextField id="pwdTF" class="textField" name="tf" maxLength="20"></TextField>
+						<View height="1" backgroundColor="Alloy.CFG.color.lineColor" bottom="0"></View>
+					</View>
+					<Button id="forgotBtn" onClick="forgotBtnFunc"></Button>
+					<Button id="submitBtn" onClick="loginFunc"></Button>
+				</View>
+			</ScrollView>
+			<View id="bottowView">
+				<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE">
+					<Label id="bottomLbl"></Label>
+					<ImageView id="heliosLogo"></ImageView>
+				</View>
+			</View>
+		</Window>
+	</NavigationWindow>
+</Alloy>

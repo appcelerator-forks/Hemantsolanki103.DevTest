@@ -1,0 +1,39 @@
+
+".container" : {
+	
+  
+}
+".navBtn":{
+	color:"white",
+	font:{
+		fontSize:12,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	}
+}
+".dropDownClass":{
+ 	top:Alloy.Globals.size_15,
+ 	height:Alloy.Globals.size_40,
+ 	backgroundColor:Alloy.CFG.color.buttonBackgroundColor,
+ 	touchFeedback: "true",
+	touchFeedbackColor: "#4B7977"
+ 	
+}
+"#portfolioSelectionLbl":{
+	left:Alloy.Globals.size_15,
+	touchEnabled:false,
+	color:"white",
+	font:{
+		fontSize:Alloy.Globals.size_15,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	}
+}
+"#dropDownIcon":{
+	right:Alloy.Globals.size_15,
+	color:"white",
+	font:{
+		fontSize:Alloy.Globals.size_22,		
+	}
+}
+"#portfolioDropDown":{
+	
+}

@@ -1,0 +1,114 @@
+".container": {
+}
+
+"#logo":{
+	top:"10%",
+	image:'/commonImages/helios_logo.png',
+	
+	height:Alloy.Globals.size_90,
+	width:Alloy.Globals.size_90,
+}
+
+
+"#headerLbl": { 
+	top:Alloy.Globals.size_8, 
+	font: {
+		fontSize: Alloy.Globals.size_22,
+		fontFamily:Alloy.CFG.font.robotoBold
+	}
+}
+
+"#userIconLbl": {
+	left:0,
+	font: {
+		fontSize: Alloy.Globals.size_14
+	},
+	width:'10%',
+	textAlign:'left'
+}
+"#pwdIconLbl":{
+	left:0,
+	font: {
+		fontSize: Alloy.Globals.size_15
+	},
+	width:'10%',
+	textAlign:'left'
+}
+
+"#emailTF":{
+	hinttextid:'email_hint',
+	
+	keyboardType:Titanium.UI.KEYBOARD_TYPE_EMAIL,
+	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
+}
+"#pwdTF":{
+	
+	hinttextid:'password_txt',
+	passwordMask:true,
+	returnKeyType:Titanium.UI.RETURNKEY_DONE,
+}
+".textField":{
+	height:Alloy.Globals.size_40,
+	hintTextColor:Alloy.CFG.color.lineColor,
+	font: {
+		fontSize: Alloy.Globals.size_14,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	left:'10%',
+	right:0,
+	backgroundColor:"transparent",
+	color:Alloy.CFG.color.lineColor,
+}
+
+"#forgotBtn":{
+	width:Ti.UI.SIZE,
+	right:'8%',
+	top:Alloy.Globals.size_6,
+	titleid:'forgot_pwd_txt',
+	font: {
+		fontSize: Alloy.Globals.size_12,
+		fontFamily:Alloy.CFG.font.robotoRegular
+	},
+	color:"white",
+	touchFeedback:true,
+	backgroundColor:Alloy.CFG.color.backgroundColor,
+}
+"#submitBtn":{
+	width:'84%',
+	top:Alloy.Globals.size_20,
+	titleid:'signIn_txt',
+	font: {
+		fontSize: Alloy.Globals.size_15,
+		fontFamily:Alloy.CFG.font.robotoRegular
+		
+	},
+	color:"white",
+	height:Alloy.Globals.size_34,
+	borderRadius:Alloy.Globals.size_17,
+	touchFeedback:true,
+	//touchFeedback :Alloy.CFG.color.lineColor,
+	backgroundColor:Alloy.CFG.color.buttonBackgroundColor,
+	
+}
+"#bottowView":{
+	bottom:0,
+	height:Alloy.Globals.size_24,
+	backgroundColor:Alloy.CFG.color.buttonBackgroundColor
+}
+"#bottomLbl":{
+	left:0,
+	
+	
+	textid:"powered_by_txt",
+	font: {
+		fontSize: Alloy.Globals.size_10,
+		fontFamily:Alloy.CFG.font.robotoMedium
+	},
+	color:"white"
+}
+"#heliosLogo":{
+	image:'/commonImages/helios_logo.png',
+	left:5,
+	height:Alloy.Globals.size_16,
+	width:Alloy.Globals.size_16,
+}

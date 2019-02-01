@@ -1,0 +1,9 @@
+<Alloy>
+    <View id="widget" width="Ti.UI.FILL" zIndex="100" height="255dp" bottom="-265" backgroundColor="white" zIndex="10" layout="vertical" platform="ios"  backgroundColor="#d7eddf">
+        <View id="buttonContainer" width="Ti.UI.FILL" height="Alloy.Globals.size_40" platform="ios">
+            <Button id="cancelButton" class="pickerButton" left="10%" onClick="hidePicker" title="L('cancel_txt')"></Button>
+            <Button id="doneButton" class="pickerButton" right="10%" onClick="done" title="L('done_txt')"></Button>
+        </View>
+        <Picker id="picker" backgroundColor="#d7eddf" selectionIndicator="true" platform="ios" onChange="pickerChangeFunc" />
+    </View>
+</Alloy>

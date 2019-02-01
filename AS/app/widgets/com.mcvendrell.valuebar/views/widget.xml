@@ -1,0 +1,16 @@
+<Alloy>
+	<View id="wrapper">
+		<View height="Ti.UI.SIZE" >
+			<Label id="title" />
+			<Label id="fieldLbl" />
+		</View>
+		<View height="Ti.UI.SIZE" top='5'>
+			<Label id="unitLbl" />
+			<View id="valueWrapper">
+				<View id="value" />
+				<Label id="valueText" />
+			</View>
+		</View>
+		<View height="5" backgroundColor="transparent"></View>
+	</View>
+</Alloy>

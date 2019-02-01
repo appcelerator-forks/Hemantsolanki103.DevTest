@@ -1,0 +1,14 @@
+<Alloy>
+	<Window    onOpen="openFunc" name="detail">>
+		<RightNavButtons  platform="ios">
+			<View left="0"> 
+				<Button id="homeBtn" class="fa" title="\uf015" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<ScrollView>
+			<ImageView id="img_type"></ImageView>
+			<Label id="titleLbl"></Label>
+			<Label id="descLbl"></Label>
+		</ScrollView>
+	</Window>
+</Alloy>

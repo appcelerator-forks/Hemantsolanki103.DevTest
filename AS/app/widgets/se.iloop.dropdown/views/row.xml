@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="container" class="container" zIndex="100">
+		<Label id="title"></Label>
+		<View bottom="1" height="1" backgroundColor="Alloy.CFG.color.buttonBackgroundColor"></View>
+	</View>
+</Alloy>

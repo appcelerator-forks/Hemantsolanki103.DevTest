@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="container" class="container" zIndex="100">
+		<View id="topRow" class="topRow">
+			<Label id="topRowTitle" >Choose one</Label>
+			<Label class="fa" id="dropdownIcon"  text="\uf13a"></Label>
+		
+		</View>
+	</View>
+</Alloy>

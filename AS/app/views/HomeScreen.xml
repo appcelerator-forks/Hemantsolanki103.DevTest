@@ -1,0 +1,67 @@
+<Alloy>
+	<NavigationWindow id="navWin" module="xp.ui">
+		<Window titleid="home_txt" hidesBackButton="true" id="homeWin"  onOpen="openFunc" onAndroid:back="deviceBackFunc">
+			<RightNavButtons platform="ios">
+				<View>
+					<Button  id="logoutBtn" class="navItemClass" title="\ue065" onClick="logoutFunc"></Button>
+				</View>
+				<View>
+					<Button id="settingBtn" right="0" layout="right" class="navItemClass" title="\ue09a" textAlign="right" onClick="settingFunc"></Button>
+				</View>
+			</RightNavButtons>
+			
+			<View>
+				<View height="Alloy.Globals.size_140"  top="0">
+					<Label id="welcomeLbl"></Label>
+					<View height="1" backgroundColor="Alloy.CFG.color.lineColor" bottom="0"></View>
+					<ImageView id="companyLogo"  module="av.imageview" defaultImage="/commonImages/placeholderLogo.png" contentMode="Alloy.Globals.CONTENT_MODE_FILL"></ImageView>
+					<Label id="dateLbl" class="sa"></Label>
+				</View>
+				<View top="Alloy.Globals.size_150" bottom="Alloy.Globals.size_24">
+					<View top="0" height="50%">
+						<View class="gridClass" onClick="openMapFunc" left="0">
+							<Button  class="hoverBtnClass" platform="ios"></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false" zIndex="10">
+								<ImageView image="/commonImages/location.png"  class="gridImageClass"></ImageView>
+								<!-- <Label id="mapBtn" class="sa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\ue096"></Label> -->
+								<Label id="mapLbl" class="titleClass" textid="map_txt"></Label>
+							</View>
+						</View>
+						<View class="gridClass" right="0" onClick="openNotiticationFunc">
+							<Button  class="hoverBtnClass" platform="ios"></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false"  zIndex="10">
+								<Label id="notificationBtn" class="sa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\ue027"></Label>
+								<Label id="notificationLbl" class="titleClass" textid="notification_txt"></Label>
+							</View>
+						</View>
+					</View>
+					<View bottom="0" height="50%" >
+						<View class="gridClass" left="0"  onClick="openInsightFunc">
+							<Button  class="hoverBtnClass" platform="ios"></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false"  zIndex="10">
+								<ImageView image="/commonImages/insightLogo.png"  class="gridImageClass"></ImageView>
+								<!-- <Label id="insightBtn" class="fa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\uf1ea"></Label> -->
+								<Label id="insightLbl" class="titleClass" textAlign="center" textid="insight_txt"></Label>
+							</View>
+						</View>
+						<View class="gridClass" right="0"  onClick="openOperationalPerformanceFunc">
+							<Button  class="hoverBtnClass" platform="ios" ></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false" zIndex="10">
+								<ImageView class="gridImageClass" image="/commonImages/operationalPerformance.png" ></ImageView>
+								<!-- <Label id="performanceBtn" class="fa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\uf080"></Label> -->
+								<Label id="performanceLbl" class="titleClass" textid="op_txt"></Label>
+							</View>
+						</View>
+					</View>
+				</View>
+				<View id="bottowView">
+					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE">
+						<Label id="bottomLbl"></Label>
+						<ImageView id="heliosLogo"></ImageView>
+					</View>
+				</View>
+
+			</View>
+		</Window>
+	</NavigationWindow>
+</Alloy>
