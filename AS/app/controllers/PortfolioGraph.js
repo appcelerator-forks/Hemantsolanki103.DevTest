@@ -96,7 +96,27 @@ var jsonArray = [{
 	}]
 }];
 function openFunc(e) {
-
+if (OS_ANDROID) {
+		var actionBarMenu = [{
+			'type' : "icon",
+			'text' : L('home_txt'),
+			'code' : 0xf015,
+			'fontFamily' : 'FontAwesome'
+		}, {
+			'type' : "icon",
+			'text' : L('filter_title'),
+			'code' : 0xf0b0,
+			'fontFamily' : 'FontAwesome'
+		}];
+		Alloy.Globals.createActionBarMenu.createActionBarMenu($.PortfolioGraph, L('portfolioGraph_txt'),actionBarMenu, function(e) {
+			if (e.source.title == L('home_txt')) {
+				backToHomeFunc();
+			}
+			if (e.source.title == L('filter_title')) {
+				filterClickFunc();
+			}
+		});
+	}
 	if (OS_ANDROID) {
 		var activity = $.PortfolioGraph.getActivity();
 		if (activity) {

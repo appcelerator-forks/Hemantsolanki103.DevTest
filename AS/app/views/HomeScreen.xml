@@ -9,7 +9,6 @@
 					<Button id="settingBtn" right="0" layout="right" class="navItemClass" title="\ue09a" textAlign="right" onClick="settingFunc"></Button>
 				</View>
 			</RightNavButtons>
-			
 			<View>
 				<View height="Alloy.Globals.size_140"  top="0">
 					<Label id="welcomeLbl"></Label>
@@ -27,11 +26,12 @@
 								<Label id="mapLbl" class="titleClass" textid="map_txt"></Label>
 							</View>
 						</View>
-						<View class="gridClass" right="0" onClick="openNotiticationFunc">
-							<Button  class="hoverBtnClass" platform="ios"></Button>
-							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false"  zIndex="10">
-								<Label id="notificationBtn" class="sa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\ue027"></Label>
-								<Label id="notificationLbl" class="titleClass" textid="notification_txt"></Label>
+						<View class="gridClass" right="0"  onClick="openOperationalPerformanceFunc">
+							<Button  class="hoverBtnClass" platform="ios" ></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false" zIndex="10">
+								<ImageView class="gridImageClass" image="/commonImages/operationalPerformance.png" ></ImageView>
+								<!-- <Label id="performanceBtn" class="fa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\uf080"></Label> -->
+								<Label id="performanceLbl" class="titleClass" textid="op_txt"></Label>
 							</View>
 						</View>
 					</View>
@@ -44,12 +44,11 @@
 								<Label id="insightLbl" class="titleClass" textAlign="center" textid="insight_txt"></Label>
 							</View>
 						</View>
-						<View class="gridClass" right="0"  onClick="openOperationalPerformanceFunc">
-							<Button  class="hoverBtnClass" platform="ios" ></Button>
-							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false" zIndex="10">
-								<ImageView class="gridImageClass" image="/commonImages/operationalPerformance.png" ></ImageView>
-								<!-- <Label id="performanceBtn" class="fa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\uf080"></Label> -->
-								<Label id="performanceLbl" class="titleClass" textid="op_txt"></Label>
+						<View class="gridClass" right="0" onClick="openNotiticationFunc">
+							<Button  class="hoverBtnClass" platform="ios"></Button>
+							<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="vertical" touchEnabled="false"  zIndex="10">
+								<Label id="notificationBtn" class="sa" color="Alloy.CFG.color.lineColor"  touchEnabled="false" text="\ue027"></Label>
+								<Label id="notificationLbl" class="titleClass" textid="notification_txt"></Label>
 							</View>
 						</View>
 					</View>

@@ -15,7 +15,8 @@
 	font: {
 		fontSize: Alloy.Globals.size_22,
 		fontFamily:Alloy.CFG.font.robotoBold
-	}
+	},
+	color:Alloy.CFG.color.lineColor
 }
 
 "#userIconLbl": {
@@ -24,7 +25,8 @@
 		fontSize: Alloy.Globals.size_14
 	},
 	width:'10%',
-	textAlign:'left'
+	textAlign:'left',
+	color:Alloy.CFG.color.lineColor
 }
 "#pwdIconLbl":{
 	left:0,
@@ -32,10 +34,11 @@
 		fontSize: Alloy.Globals.size_15
 	},
 	width:'10%',
-	textAlign:'left'
+	textAlign:'left',
+	color:Alloy.CFG.color.lineColor
 }
 
-"#emailTF":{
+"#usernameTF":{
 	hinttextid:'email_hint',
 	
 	keyboardType:Titanium.UI.KEYBOARD_TYPE_EMAIL,

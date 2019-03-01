@@ -4,6 +4,7 @@
             <Button id="cancelButton" class="pickerButton" left="10%" onClick="hidePicker" title="L('cancel_txt')"></Button>
             <Button id="doneButton" class="pickerButton" right="10%" onClick="done" title="L('done_txt')"></Button>
         </View>
-        <Picker id="picker" backgroundColor="#d7eddf" selectionIndicator="true" platform="ios" onChange="pickerChangeFunc" />
+        <Picker id="picker" backgroundColor="#d7eddf" selectionIndicator="true"  onChange="pickerChangeFunc" />
     </View>
+    <Picker id="picker" backgroundColor="#d7eddf" platform="android" selectionIndicator="true"  onChange="pickerChangeFunc" />
 </Alloy>

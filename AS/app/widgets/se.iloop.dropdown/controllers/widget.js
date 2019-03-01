@@ -20,7 +20,6 @@ function setRows(_rows){
 }
 
 function handleRowClick(row){
-    Ti.API.info('handleRowClick from widget.js');
     if(!isExpanded){
       isExpanded = !isExpanded;
       return expandMenu();

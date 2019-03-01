@@ -19,17 +19,14 @@ function init() {
 			for (var i = 0; i < args.value.length; i++) {
 				var row = Ti.UI.createPickerRow({
 					title : (args.from == 'graph') ? args.value[i].chartName : args.value[i],
-
 				});
 				data.push(row);
-
 			};
-
 			$.picker.setSelectedRow(0, args.selectedIndex, false);
 			$.picker.add(data);
 		} else {
 			var optionsDialog = Ti.UI.createOptionDialog({
-				options :  ["TIME VS SPECIFIC YIELD","TRIGGER VOLTAGE VS MPPT EFFICIENCY"],
+				options : (args.from == "graph") ? createArrayForAndroid(args.value) : args.value,
 				buttonNames : ['Cancel'],
 				title : "Select Option",
 				selectedIndex : args.selectedIndex
@@ -45,8 +42,6 @@ function init() {
 
 			});
 		}
-
-		
 
 	} else {
 
@@ -87,16 +82,45 @@ function init() {
 				$.picker.maxDate = args.maxDate;
 			}
 		}
+		if (OS_ANDROID) {
+
+			if (args.type == "time") {
+				$.picker.showTimePickerDialog({
+
+					format24 : true,
+					callback : function(e) {
+						if (e.cancel) {
+							Ti.API.info('User canceled dialog');
+						} else {
+							done(e, 0);
+						}
+					}
+				});
+			} else {
+				$.picker.showDatePickerDialog({
+					value : (args.value) ? args.value : new Date(),
+					callback : function(e) {
+						if (e.cancel) {
+							Ti.API.info('User canceled dialog');
+						} else {
+							done(e, 0);
+						}
+					}
+				});
+
+			}
+		}
 	}
 }
-function createArrayForAndroid(data){
+
+function createArrayForAndroid(data) {
 	var options = [];
-	for (var i=0; i < data.length; i++) {
-	  options.push(data[i].chartName);
+	for (var i = 0; i < data.length; i++) {
+		options.push(data[i].chartName);
 	};
-	consoleLog('options',JSON.stringify(options));
+	consoleLog('options', JSON.stringify(options));
 	return options;
-	
+
 }
 
 function showPicker() {
@@ -113,55 +137,7 @@ function showPicker() {
 	} else if (OS_ANDROID) {
 		/* The Android picker will be a pop-up
 		 * dialog. */
-		if (args.value) {
 
-			$.picker.setValue(args.value);
-		}
-
-		/* Set the minimum and maximum dates, if applicable */
-		if (args.minDate) {
-			if (OS_IOS) {
-				$.picker.setMinDate(args.minDate);
-			}
-			if (OS_ANDROID) {
-				$.picker.minDate = args.minDate;
-			}
-		}
-
-		if (args.maxDate) {
-			if (OS_IOS) {
-				$.picker.setMaxDate(args.maxDate);
-			}
-			if (OS_ANDROID) {
-				$.picker.maxDate = args.maxDate;
-			}
-		}
-
-		if (args.type == "time") {
-			$.picker.showTimePickerDialog({
-
-				format24 : true,
-				callback : function(e) {
-					if (e.cancel) {
-						Ti.API.info('User canceled dialog');
-					} else {
-						done(e, 0);
-					}
-				}
-			});
-		} else {
-			$.picker.showDatePickerDialog({
-				value : (args.value) ? args.value : new Date(),
-				callback : function(e) {
-					if (e.cancel) {
-						Ti.API.info('User canceled dialog');
-					} else {
-						done(e, 0);
-					}
-				}
-			});
-
-		}
 	}
 }
 
@@ -233,5 +209,7 @@ if (OS_IOS) {
 	/*** Make accessable outside the widget ***/
 	$.widget.showPicker = showPicker;
 	$.widget.hidePicker = hidePicker;
+} else {
+
 }
 

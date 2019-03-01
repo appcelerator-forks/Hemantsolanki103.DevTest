@@ -18,7 +18,7 @@
 	top:Alloy.Globals.size_10,
 	bottom:Alloy.Globals.size_26,
 	color:Alloy.CFG.color.lineColor,
-	right:Alloy.Globals.size_120,
+	right:Alloy.Globals.size_130,
 	verticalAlign:Titanium.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
 	ellipsize:Titanium.UI.TEXT_ELLIPSIZE_TRUNCATE_END
 }

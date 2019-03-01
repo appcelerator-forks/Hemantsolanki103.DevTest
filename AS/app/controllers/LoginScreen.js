@@ -2,7 +2,7 @@
 var args = $.args;
 
 var validation = require('/Validation.js');
-
+var userDetailsObj={};
 //Xml based event of window open: we have set action bar title and color in android
 function openFunc() {
 	if (OS_ANDROID) {
@@ -10,10 +10,11 @@ function openFunc() {
 		Alloy.Globals.abx.setTitleColor(Alloy.CFG.color.lineColor);
 	}
 }
+
 //Xml based event of window click when user click anywhere on window, any focused text field will blur
 function winClickFunc(e) {
 	if (e.source.name != "tf") {
-		$.emailTF.blur();
+		$.usernameTF.blur();
 		$.pwdTF.blur();
 	}
 }
@@ -25,12 +26,100 @@ function emailReturnFunc(e) {
 
 //Xml based event of login button click: Valdiate all field and move to home screen
 function loginFunc(e) {
-	if (validation.isTextFieldEmpty($.emailTF.value)) {
-		if (validation.isEmailValid($.emailTF.value)) {
-			if (validation.isTextFieldEmpty($.pwdTF.value)) {
-				if (validation.isTextLengthValid($.pwdTF.value, 6, 20)) {
-					
-					Ti.App.Properties.setBool("isAutoLogin",true);
+	if (validation.isTextFieldEmpty($.usernameTF.value)) {
+		//	if (validation.isEmailValid($.usernameTF.value)) {
+		if (validation.isTextFieldEmpty($.pwdTF.value)) {
+			if (validation.isTextLengthValid($.pwdTF.value, 4, 20)) {
+				loginAPI();
+			} else {
+				showAlert(L('validation_pwd_length_msg'));
+			}
+		} else {
+			showAlert(L('validation_pwd_txt'));
+		}
+		// } else {
+		// showAlert(L('validation_email_txt2'));
+		// }
+	} else {
+		showAlert(L('validation_email_txt1'));
+	}
+
+}
+
+//Xml based event of forgot button click: Go to forgot screen
+function forgotBtnFunc() {
+	var forgotScreen = Alloy.createController("ForgotPassword").getView();
+	$.navWin.openWindow(forgotScreen);
+}
+
+/*Clouser function for login api one calling
+ * Inner function call the api and fetch access_token
+ */
+function loginAPI() {
+	var url = Alloy.Globals.Constants.DOMAIN_URL + Alloy.Globals.Constants.SERVICE_LOGIN;
+	var postData = {
+		'username' : $.usernameTF.value.trim(),
+		'password' : $.pwdTF.value.trim()
+	};
+
+	Alloy.Globals.Communicator.post(url, JSON.stringify(postData), function(e) {
+		if (e.success) {
+			try {
+				Ti.API.info('response ' + e.response);
+				var response = JSON.parse(e.response);
+				if (response != null) {
+					Ti.App.Properties.setString("access_token", response.access_token);
+					getUserDetails();
+				} else {
+					showAlert(Alloy.Globals.Constants.MSG_NO_DATA);
+				}
+			} catch(e) {
+				consoleLog('Error Login ', e.message);
+			}
+		} else {
+			showAlert(Alloy.Globals.Constants.MSG_STATUS_CODE);
+		}
+	});
+}
+
+/*Clouser function for login api two 
+ * Inner function call the api and fetch user details{userId,first name, last name and others} from user_name
+ */
+function getUserDetails() {
+	var url = Alloy.Globals.Constants.DOMAIN_URL + Alloy.Globals.Constants.SERVICE_USER_DETAILS + $.usernameTF.value.trim();
+	Alloy.Globals.Communicator.get(url, function(e) {
+		if (e.success) {
+			try {
+				var response = JSON.parse(e.response);
+				if (response != null) {
+					Ti.App.Properties.setBool("isAutoLogin", true);
+					userDetailsObj = response;	
+					getOrgDetails(response.id);
+				} else {
+					showAlert(Alloy.Globals.Constants.MSG_NO_DATA);
+				}
+			} catch(e) {
+				consoleLog('Error Login User Data2', e.message);
+			}
+		} else {
+			showAlert(Alloy.Globals.Constants.MSG_STATUS_CODE);
+		}
+	});
+}
+
+/*Clouser function for login api three 
+ * Inner function call the api and fetch user organization details(contact number, organizationID and other) 
+ */
+function getOrgDetails(userId) {
+	var url = Alloy.Globals.Constants.DOMAIN_URL + Alloy.Globals.Constants.SERVICE_USER_ORG_DETAILS + userId;
+	Alloy.Globals.Communicator.get(url, function(e) {
+		if (e.success) {
+			try {
+				var response = JSON.parse(e.response);
+				if (response != null) {
+					Ti.App.Properties.setBool("isAutoLogin", true);
+					userDetailsObj.organisationId = response.organisationId;
+					Ti.App.Properties.setObject("userData", userDetailsObj);
 					var params = {};
 					params.displayHomeAsUp = false;
 					params.swipeBack = false;
@@ -44,22 +133,13 @@ function loginFunc(e) {
 					}
 					$.navWin.close();
 				} else {
-					showAlert(L('validation_pwd_length_msg'));
+					showAlert(Alloy.Globals.Constants.MSG_NO_DATA);
 				}
-			} else {
-				showAlert(L('validation_pwd_txt'));
+			} catch(e) {
+				consoleLog('Error Login User Data 3', e.message);
 			}
 		} else {
-			showAlert(L('validation_email_txt2'));
+			showAlert(Alloy.Globals.Constants.MSG_STATUS_CODE);
 		}
-	} else {
-		showAlert(L('validation_email_txt1'));
-	}
-
-}
-
-//Xml based event of forgot button click: Go to forgot screen
-function forgotBtnFunc() {
-	var forgotScreen = Alloy.createController("ForgotPassword").getView();
-	$.navWin.openWindow(forgotScreen);
+	});
 }

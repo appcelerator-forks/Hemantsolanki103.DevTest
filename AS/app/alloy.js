@@ -10,68 +10,51 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-// added during app creation. this will automatically login to
-// ACS for your application and then fire an event (see below)
-// when connected or errored. if you do not use ACS in your
-// application as a client, you should remove this block
-(function() {
-	var ACS = require('ti.cloud'),
-	    env = Ti.App.deployType.toLowerCase() === 'production' ? 'production' : 'development',
-	    username = Ti.App.Properties.getString('acs-username-' + env),
-	    password = Ti.App.Properties.getString('acs-password-' + env);
 
-	// if not configured, just return
-	if (!env || !username || !password) {
-		return;
-	}
-
-	/**
-	 * Appcelerator Cloud (ACS) Admin User Login Logic
-	 *
-	 * fires login.success with the user as argument on success
-	 * fires login.failed with the result as argument on error
-	 **/
-	ACS.Users.login({
-		login : username,
-		password : password,
-	}, function(result) {
-		if (env === 'development') {
-			Ti.API.info('ACS Login Results for environment `' + env + '`:');
-			Ti.API.info(result);
-		}
-		if (result && result.success && result.users && result.users.length) {
-			Ti.App.fireEvent('login.success', result.users[0], env);
-		} else {
-			Ti.App.fireEvent('login.failed', result, env);
-		}
-	});
-
-})();
-
-var measurement = require('alloy/measurement');
+/*Require all necessary module
+ * Communicator: communicate with back-end and creating HTTP client for different methods GET and POST
+ * Constants: All constants defined here like backend API domain, api name and others application level constants
+ * Measurement: Titanium module for many uses but in our application used for pixel to density pixel conversion(method:pxToDP)
+ * Map: module use for showing map and related activity
+ * KSToastView/KSToastView(IOS): iOS module for toast notification showing in titanium ios
+ * com.alcoapps.actionbarextras(Android): module for actionbar design related like in our app want to use vector icon for app size tinning
+ * av.imageview: Used for set all image aspect ratio setting
+ * commonJS/common_services: this JS file hold all common web api
+ */
+Alloy.Globals.Communicator = require('Communicator');
+Alloy.Globals.Constants = require('Constants');
+Alloy.Globals.Measurement = require('alloy/measurement');
 Alloy.Globals.Map = require('ti.map');
+var AvImageview = require("av.imageview");
+Alloy.Globals.CONTENT_MODE_FIT = AvImageview.CONTENT_MODE_ASPECT_FIT;
+Alloy.Globals.CONTENT_MODE_FILL = AvImageview.CONTENT_MODE_ASPECT_FILL;
+Alloy.Globals.commonService = require('commonJS/common_services');
+Alloy.Globals.createActionBarMenu = require('commonJS/actionBarMenu');
 
 if (OS_IOS) {
+	//below code write write for calculating scalefactor for dynamic layout like multiply into every fontsize
 	var defaultWidth = 320;
 	deviceWidth = Titanium.Platform.displayCaps.platformWidth;
 	var scaleFactor = deviceWidth / defaultWidth;
+	
 	var UIToastView = require('KSToastView/KSToastView');
+	//below code write write for setting the backgroundColor and font size for toast notification
 	var UIColor = require('UIKit/UIColor');
 	var UIFont = require('UIKit/UIFont');
-
 	UIToastView.ks_setAppearanceTextFont(UIFont.fontWithNameSize('Roboto-Medium', 13.00));
 	UIToastView.ks_setAppearanceBackgroundColor(UIColor.colorWithRedGreenBlueAlpha(68 / 255.0, 67 / 255.0, 68 / 255.0, 0.800));
 } else {
-
-	deviceWidth = measurement.pxToDP(Titanium.Platform.displayCaps.platformWidth) * 0.0028;
+	// below code write for calculating scalefactor for dynamic layout like multiply into every fontsize
+	deviceWidth = Alloy.Globals.Measurement.pxToDP(Titanium.Platform.displayCaps.platformWidth) * 0.0028;
 	var scaleFactor = deviceWidth;
 	Alloy.Globals.abx = require('com.alcoapps.actionbarextras');
-
 }
 
+/* ShowAlert function: used for show toast notification for overall application
+ * Parameters: string of message which is need to show on toast
+ */
 function showAlert(strMessage) {
 	if (OS_IOS) {
-
 		UIToastView.ks_showToast(strMessage);
 	} else {
 		var toast = Ti.UI.createNotification({
@@ -80,13 +63,11 @@ function showAlert(strMessage) {
 		});
 		toast.show();
 	};
-
 }
 
-/**
+/*
  * Font Size Declaration
- * */
-
+ */
 Alloy.Globals.size_1 = 1 * scaleFactor;
 Alloy.Globals.size_2 = 2 * scaleFactor;
 Alloy.Globals.size_3 = 3 * scaleFactor;
@@ -164,72 +145,47 @@ Alloy.Globals.size_250 = 250 * scaleFactor;
 Alloy.Globals.size_300 = 300 * scaleFactor;
 Alloy.Globals.size_350 = 350 * scaleFactor;
 
-//Module for imageview aspect ratio management
 
-var AvImageview = require("av.imageview");
-
-//and to use contentmodes constants via alloy
-Alloy.Globals.CONTENT_MODE_FIT = AvImageview.CONTENT_MODE_ASPECT_FIT;
-Alloy.Globals.CONTENT_MODE_FILL = AvImageview.CONTENT_MODE_ASPECT_FILL;
-
-function consoleLog(msg, str) {
+//consoleLog function used for showing the log on console. If we don't want any log, we only need to comment one line.
+var consoleLog =function(msg, str) {
 	Ti.API.info(msg + "  : " + str);
-}
+};
 
-
-
+//Recursive function used for android only to navigate to home screen
 Alloy.Globals.goToHome = function(win) {
-
 	if (win == null) {
 		return;
 	}
 	if (win.oldWin != null) {
 		Alloy.Globals.goToHome(win.oldWin);
 	}
-	//if (OS_ANDROID) {
-		//if (win.name == "setting" || win.name == "about" || win.name == "contact"|| win.name == "terms"|| win.name == "privacy") {
-		//	Alloy.Globals.mainVW.remove(win);
-		//} else {
-		//	win.close();
-		//}
-
-	//} else {
-		win.close();
-	//}
-	try {
-		// Alloy.Globals.refreshItem.visible = true;
-		// Alloy.Globals.searchItem.visible = true;
-	} catch(e) {
-	}
+	win.close();
 };
 
-
-var generalPicker = function(fromWindow, minD, maxD, val, type,from,selectedIndex, callback) {
+//generalPicker function commonly used for all picker in application either date or others
+var generalPicker = function(fromWindow, minD, maxD, val, type, from, selectedIndex, callback) {
 	var datePickerWidget = Alloy.createWidget("general.picker", "widget", {
-		onDone : function(value,index) {
-			consoleLog("index",index);
-			callback(value,index);
+		onDone : function(value, index) {
+			consoleLog("index", index);
+			callback(value, index);
 		},
 		minDate : minD,
 		maxDate : maxD,
 		value : val,
 		type : type,
-		from:from,
-		height:200,
-		bottom:-220,
+		from : from,
+		height : 200,
+		bottom : -220,
 		selectedIndex : selectedIndex,
-
 	});
 	/*** Get the View ***/
 	if (OS_IOS) {
-		
 		for (var i = 0; i < fromWindow.getChildren().length; i++) {
 			if (fromWindow.getChildren()[i].id == "widget") {
 				fromWindow.remove(fromWindow.getChildren()[i]);
 			}
 		};
-				fromWindow.add(datePickerWidget.getView());
-				
+		fromWindow.add(datePickerWidget.getView());
+		datePickerWidget.getView().showPicker();
 	}
-	datePickerWidget.getView().showPicker();
-};
+}; 

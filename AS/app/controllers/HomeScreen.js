@@ -1,14 +1,30 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
+var userData = Ti.App.Properties.getObject("userData");
 
 //Getting current date
 var currentDate = new Date();
 var dialog;
 //Initialization of some xml defined component
-$.welcomeLbl.text = L('welcome_txt') + ',\n' + 'Hemant Solanki';
+var headerText = L('welcome_txt') + ',\n' + "Administrator" + " " + 'Administrator';
 $.dateLbl.text = "\ue075" + "  " + currentDate.toDateString();
 $.companyLogo.image = "/commonImages/adani-logo.png";
 Alloy.Globals.navWin = $.navWin;
+consoleLog('i', headerText.indexOf(','));
+consoleLog('L', headerText.length);
+var attr = Titanium.UI.createAttributedString({
+	text : headerText,
+	attributes : [{
+		type : Titanium.UI.ATTRIBUTE_FONT,
+		value : {
+			fontFamily : Alloy.CFG.font.robotoMedium,
+			fontSize : Alloy.Globals.size_15
+		},
+		range : [headerText.indexOf(',') + 1, headerText.length - 8]
+	}]
+});
+$.welcomeLbl.attributedString = attr;
+
 /*
  * Xml based event of window open: we have set action bar title and color in android
  * And add menu button on action bar
@@ -20,12 +36,9 @@ function openFunc(e) {
 		var activity = $.homeWin.getActivity();
 
 		if (activity) {
-
 			Alloy.Globals.abx.title = L('home_txt');
 			Alloy.Globals.abx.setTitleColor(Alloy.CFG.color.lineColor);
-
 			activity.onCreateOptionsMenu = function(e) {
-
 				e.menu.clear();
 				// Using MaterialIcons for MenuItems
 				var logoutItem = e.menu.add({
@@ -33,7 +46,6 @@ function openFunc(e) {
 					title : "Logout",
 					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
 				});
-
 				// ...then, let abx apply the custom font
 				Alloy.Globals.abx.setMenuItemIcon({
 					menu : e.menu,
@@ -75,7 +87,7 @@ function openFunc(e) {
 	}
 	//Some functions calling for initialization
 	createMenuDialogForOperationalPerformance();
-	
+
 }
 
 //Click event of logout menu
@@ -97,11 +109,10 @@ function logoutFunc() {
 				});
 			}
 			$.navWin.close();
+			Ti.App.Properties.setString("access_token", null);
 			Ti.App.Properties.setBool("isAutoLogin", false);
+			Ti.App.Properties.setObject("userData", null);
 		}
-		Ti.API.info('e.cancel: ' + e.cancel);
-		Ti.API.info('e.source.cancel: ' + e.source.cancel);
-		Ti.API.info('e.index: ' + e.index);
 	});
 	dialog.show();
 
@@ -156,8 +167,8 @@ function openInsightFunc() {
 
 }
 
-function createMenuDialogForOperationalPerformance(){
-var opts = {
+function createMenuDialogForOperationalPerformance() {
+	var opts = {
 		cancel : 2,
 		options : (OS_IOS) ? [L('portfolioKpi_txt'), L('portfolioRank_txt'), L('cancel_txt')] : [L('portfolioKpi_txt'), L('portfolioRank_txt')],
 		buttonNames : [L('cancel_txt')],
@@ -165,28 +176,25 @@ var opts = {
 	};
 	dialog = Ti.UI.createOptionDialog(opts);
 	dialog.addEventListener('click', function(e) {
-		if ((e.button== false || OS_IOS) && e.index === 0) {
+		if ((e.button == false || OS_IOS) && e.index === 0) {
 			var params = {};
 			params.displayHomeAsUp = true;
 			var kpiScreen = Alloy.createController('PortfolioKPIScreen').getView();
 			$.navWin.openWindow(kpiScreen, params);
 			Alloy.Globals.currentWindow = kpiScreen;
 		}
-		if ((e.button== false || OS_IOS) &&  e.index === 1) {
+		if ((e.button == false || OS_IOS) && e.index === 1) {
 			var params = {};
 			params.displayHomeAsUp = true;
 			var rankScreen = Alloy.createController('PortfolioRank').getView();
 			$.navWin.openWindow(rankScreen, params);
-			Alloy.Globals.currentWindow = rankScreen;	
+			Alloy.Globals.currentWindow = rankScreen;
 		}
 	});
 }
 
-	
-	
 function openOperationalPerformanceFunc() {
 
 	dialog.show();
 }
-
 

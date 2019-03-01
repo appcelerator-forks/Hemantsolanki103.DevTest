@@ -11,7 +11,7 @@ if(args.styles){
 }
 
 function handleRowClick() {
-  $.trigger('didClickRow', { title: args.title, index: args.rowIndex });
+  $.trigger('didClickRow', { title: args.title, index: args.rowIndex,id:args.id });
 };
 
 function setActiveColor(event) {

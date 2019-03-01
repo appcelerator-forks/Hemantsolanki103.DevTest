@@ -1,63 +1,36 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 
+
 function openFunc(e) {
 	if (OS_ANDROID) {
-		var activity = $.PortfolioRank.getActivity();
-		if (activity) {
-			Alloy.Globals.abx.title = L('portfolioRank_txt');
-			Alloy.Globals.abx.setTitleColor(Alloy.CFG.color.lineColor);
-			activity.onCreateOptionsMenu = function(e) {
-				e.menu.clear();
-				
-				var homeItem = e.menu.add({
-					itemId : 101, // don't forget to set an id here
-					title : "Home",
-					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
-				});
-
-				// ...then, let abx apply the custom font
-				Alloy.Globals.abx.setMenuItemIcon({
-					menu : e.menu,
-					menuItem : homeItem,
-
-					fontFamily : 'FontAwesome',
-					icon : String.fromCharCode(0xf015),
-
-					// icon: "/commonImages/helios_logo.png",
-					color : "#92ccc5",
-					size : 28
-				});
-				var filterItem = e.menu.add({
-					itemId : 102, // don't forget to set an id here
-					title : "Filter",
-					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
-				});
-
-				// ...then, let abx apply the custom font
-				Alloy.Globals.abx.setMenuItemIcon({
-					menu : e.menu,
-					menuItem : filterItem,
-					fontFamily : 'FontAwesome',
-					icon : String.fromCharCode(0xf0b0),
-					color : "#92ccc5",
-					size : 26
-				});
-
-				homeItem.addEventListener('click', function(e) {
-					backToHomeFunc();
-				});
-				filterItem.addEventListener('click', function(e) {
-					filterClickFunc();
-				});
-			};
-		}
+		var actionBarMenu = [{
+			'type' : "icon",
+			'text' : L('home_txt'),
+			'code' : 0xf015,
+			'fontFamily' : 'FontAwesome'
+		}, {
+			'type' : "icon",
+			'text' : L('filter_title'),
+			'code' : 0xf0b0,
+			'fontFamily' : 'FontAwesome'
+		}];
+		Alloy.Globals.createActionBarMenu.createActionBarMenu($.PortfolioRank, L('portfolioRank_txt'),actionBarMenu, function(e) {
+			if (e.source.title == L('home_txt')) {
+				backToHomeFunc();
+			}
+			if (e.source.title == L('filter_title')) {
+				filterClickFunc();
+			}
+		});
 	}
-//Calling function for populate the trend dropdown	
-init();
-//Create array for top n worst picker
-createTopNWorstArray();
+
+	//Calling function for populate the trend dropdown
+	init();
+	//Create array for top n worst picker
+	createTopNWorstArray();
 }
+
 
 function closeFunc(){
 	$.PortfolioRank.removeAllChildren();

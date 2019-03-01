@@ -33,60 +33,27 @@ var staticJson = [{
 
 function openFunc(e) {
 	if (OS_ANDROID) {
-		var activity = $.InsightScreen.getActivity();
-		if (activity) {
-
-			Alloy.Globals.abx.title = L('insight_title');
-			Alloy.Globals.abx.setTitleColor(Alloy.CFG.color.lineColor);
-
-			activity.onCreateOptionsMenu = function(e) {
-
-				e.menu.clear();
-
-			var homeItem = e.menu.add({
-					itemId : 101, // don't forget to set an id here
-					title : "Home",
-					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
-				});
-
-				// ...then, let abx apply the custom font
-				Alloy.Globals.abx.setMenuItemIcon({
-					menu : e.menu,
-					menuItem : homeItem,
-
-					fontFamily : 'FontAwesome',
-					icon : String.fromCharCode(0xf015),
-
-					// icon: "/commonImages/helios_logo.png",
-					color : "#92ccc5",
-					size : 28
-				});
-				var filterItem = e.menu.add({
-					itemId : 102, // don't forget to set an id here
-					title : "Filter",
-					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
-				});
-
-				// ...then, let abx apply the custom font
-				Alloy.Globals.abx.setMenuItemIcon({
-					menu : e.menu,
-					menuItem : filterItem,
-					fontFamily : 'FontAwesome',
-					icon : String.fromCharCode(0xf0b0),
-					color : "#92ccc5",
-					size : 26
-				});
-
-				homeItem.addEventListener('click', function(e) {
-					backToHomeFunc();
-				});
-
-				filterItem.addEventListener('click', function(e) {
-					filterClickFunc();
-				});
-			};
-		}
+		var actionBarMenu = [{
+			'type' : "icon",
+			'text' : L('home_txt'),
+			'code' : 0xf015,
+			'fontFamily' : 'FontAwesome'
+		}, {
+			'type' : "icon",
+			'text' : L('filter_title'),
+			'code' : 0xf0b0,
+			'fontFamily' : 'FontAwesome'
+		}];
+		Alloy.Globals.createActionBarMenu.createActionBarMenu($.InsightScreen, L('insight_title'),actionBarMenu, function(e) {
+			if (e.source.title == L('home_txt')) {
+				backToHomeFunc();
+			}
+			if (e.source.title == L('filter_title')) {
+				filterClickFunc();
+			}
+		});
 	}
+
 	rowObj.createRow(staticJson, "all", $.newsTable, "news");
 }
 
@@ -98,56 +65,54 @@ function filterClickFunc() {
 	Alloy.Globals.navWin.openWindow(filterScreen, params);
 }
 
-
 function backToHomeFunc() {
-		Alloy.Globals.navWin.popToRootWindow({
-			animated : true
-		},Alloy.Globals.currentWindow);
+	Alloy.Globals.navWin.popToRootWindow({
+		animated : true
+	}, Alloy.Globals.currentWindow);
 }
-
 
 var previousListObj = $.allVW;
 function selectNewsFunc(e) {
 	switch(e.source.index) {
 	case 0:
-		changeColorForSelectedSeverity(e,'all');
+		changeColorForSelectedSeverity(e, 'all');
 		break;
 	case 1:
-		changeColorForSelectedSeverity(e,'good');
+		changeColorForSelectedSeverity(e, 'good');
 		$.newsScrollVW.contentOffset = {
 			x : 0,
 			y : 0
 		};
 		break;
 	case 2:
-		changeColorForSelectedSeverity(e,'bad');
+		changeColorForSelectedSeverity(e, 'bad');
 		$.newsScrollVW.contentOffset = {
 			x : Alloy.Globals.size_50,
 			y : 0
 		};
 		break;
 	case 3:
-		changeColorForSelectedSeverity(e,'weather');
+		changeColorForSelectedSeverity(e, 'weather');
 		$.newsScrollVW.contentOffset = {
 			x : Alloy.Globals.size_200,
 			y : 0
 		};
 		break;
 	case 4:
-		changeColorForSelectedSeverity(e,'maintenance');
+		changeColorForSelectedSeverity(e, 'maintenance');
 		$.newsScrollVW.contentOffset = {
 			x : Alloy.Globals.size_350,
 			y : 0
 		};
 		break;
 	case 5:
-		changeColorForSelectedSeverity(e,'industry');
+		changeColorForSelectedSeverity(e, 'industry');
 		break;
 	}
 
 }
 
-function changeColorForSelectedSeverity(e,type) {
+function changeColorForSelectedSeverity(e, type) {
 	if (previousListObj === e.source) {
 		return;
 	}
