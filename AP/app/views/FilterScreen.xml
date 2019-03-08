@@ -1,0 +1,23 @@
+<Alloy>
+	<Window titleid="filter_title"  onOpen="openFunc" onPostlayout="postLayoutFunc">
+		<RightNavButtons  platform="ios">
+			<View>
+				<Button class="navBtn" titleid="apply_txt" color="white"  onClick="applyFilterFunc"></Button>
+			</View>
+			<View>
+				<Button class="navBtn" titleid="reset_txt" color="white"  onClick="resetFilterFunc"></Button>
+			</View>
+		</RightNavButtons>
+		<View id="containerVW" visible="false"  layout="vertical" zIndex="5">
+			<Widget id="portfolioDropDown" src="se.iloop.dropdown"></Widget>
+			<View height="Titanium.UI.SIZE" layout="vertical" top="1">
+				<View id="kpiVW" height="0" onClick="kpiToggleDropDown" toggle="true">
+					<Label id="topRowTitle" textid="select_kpi_code_txt" ></Label>
+					<Label class="fa" id="dropdownIcon"  text="\uf139"></Label>
+				</View>
+				<TableView id="kpiTable" height="Titanium.UI.SIZE" onClick="kpiTableClickFunc"></TableView>
+			</View>
+		</View>
+		
+	</Window>
+</Alloy>

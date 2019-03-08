@@ -1,0 +1,6 @@
+"#Wrapper": {
+  width: Ti.UI.SIZE, height: Ti.UI.SIZE
+}
+".container[platform=android]":{
+	theme:"Theme.Titanium",
+}

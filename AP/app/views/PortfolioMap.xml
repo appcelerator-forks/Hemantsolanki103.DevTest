@@ -1,0 +1,10 @@
+<Alloy>
+	<Window titleid="map_title"  layout="vertical"  onOpen="openFunc" onPostlayout="postLayoutFunc">
+	<RightNavButtons  platform="ios">
+			<View left="0"> 
+				<Button id="homeBtn" class="fa" title="\uf015" color="Alloy.CFG.color.lineColor" onClick="backToHomeFunc"></Button>
+			</View>
+		</RightNavButtons>
+
+	</Window>
+</Alloy>

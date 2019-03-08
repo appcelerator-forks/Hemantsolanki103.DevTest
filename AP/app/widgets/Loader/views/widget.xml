@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="container" backgroundColor="#0F2D30" opacity="0.8" onAndroid:back="backAndroid" >
+		<View id="Wrapper" layout="vertical">
+			
+		</View>
+	</Window>
+</Alloy>

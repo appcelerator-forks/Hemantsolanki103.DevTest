@@ -1,0 +1,70 @@
+
+[
+  {
+    "plantId": 1,
+    "instanceId": 1,
+    "instanceType": "PLANT",
+    "kpiCode": "PLANT_SPECIFIC_POWER",
+    "fromDate": "2019-03-08",
+    "fromTime": "00:00",
+    "toDate": "2019-03-08",
+    "toTime": "17:15",
+    "operation": "SUM"
+  },
+  {
+    "plantId": 1,
+    "instanceId": 1,
+    "instanceType": "PLANT",
+    "kpiCode": "PLANT_SPECIFIC_YIELD",
+    "fromDate": "2019-02-22",
+    "fromTime": "15:10",
+    "toDate": "2019-02-24",
+    "toTime": "18:30",
+    "operation": "SUM"
+  }
+]
+
+[
+    {
+        "plantId": 1,
+        "instanceId": 1,
+        "instanceType": "PLANT",
+        "kpiCode": "PLANT_SPECIFIC_POWER",
+        "kpiName": null,
+        "kpiValue": null,
+        "kpiUnit": null,
+        "kpiStatus": "ERROR",
+        "kpiMessage": "No data found to perform operation requested:SUM",
+        "fromDate": "2019-03-08",
+        "fromTime": "00:00",
+        "toDate": "2019-03-08",
+        "toTime": "17:15",
+        "readingDate": null,
+        "readingTime": null,
+        "quality": null,
+        "operation": "SUM"
+    },
+    {
+        "plantId": 1,
+        "instanceId": 1,
+        "instanceType": "PLANT",
+        "kpiCode": "PLANT_SPECIFIC_YIELD",
+        "kpiName": "Plant Specific Yield",
+        "kpiValue": {
+            "PLANT_SPECIFIC_YIELD": 3.68765557296948
+        },
+        "kpiUnit": "kWh/kWp",
+        "kpiStatus": "OK",
+        "kpiMessage": "OK",
+        "fromDate": "2019-02-22",
+        "fromTime": "15:10",
+        "toDate": "2019-02-24",
+        "toTime": "18:30",
+        "readingDate": null,
+        "readingTime": null,
+        "quality": null,
+        "operation": "SUM"
+    }
+]
+
+
